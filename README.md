@@ -3,9 +3,7 @@
 
 ### :scroll: Content
   
-- Bla bla bla 
-
-- Bla bla bla
+TEST MERGE
 
 ### :bulb: How to
   
