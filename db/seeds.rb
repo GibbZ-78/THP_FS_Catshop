@@ -19,6 +19,10 @@ puts
 end
 puts "  > Finished seeding users"
 
+#Admin creation
+User.create(role: 1, first_name: "Admin", last_name: "Administrator", password: "THP2022", email: "adminvocal46@yopmail.com", birthdate: Faker::Date.birthday(min_age: 16, max_age: 100))
+
+
 # Création de items
 puts
 puts "SEEDING - Creation of some fake items"
