@@ -1,2 +1,4 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<section class="row">
+<%= render("layouts/partials/hero_banner_index") %>
+<%= render("layouts/partials/section_all_cards",all_items: @items) %>
+</section>

@@ -6,6 +6,8 @@
     <%= link_to("Voir détails", root_path, class: "btn btn-primary") %>
     <% if user_signed_in? # The button below will appear only if current_user is connected %>
     <%= link_to("Ajouter au panier", root_path, class: "btn btn-secondary") %>
+    <% else # if current_user is NOT connected then button redirect to sign-in page %>
+    <%= link_to("Se connecter", root_path, class: "btn btn-secondary") %>
     <% end %>
   </div>
 </div>
