@@ -20,8 +20,9 @@ end
 puts "  > Finished seeding users"
 
 #Admin creation
+puts "  > Seeding admin info"
 User.create(role: 1, first_name: "Admin", last_name: "Administrator", password: "THP2022", email: "adminvocal46@yopmail.com", birthdate: Faker::Date.birthday(min_age: 16, max_age: 100))
-
+puts "  > Finished seeding admin"
 
 # Création de items
 puts
@@ -32,5 +33,5 @@ puts
  	puts "  > Item n°: #{Item.last.id} - title: #{Item.last.title} - description: #{Item.last.description[0..20]} - price: #{Item.last.price} - image: #{Item.last.image_url}"
 end
 puts "  > Finished seeding items"
-
+puts
 puts "SEEDING - This is the end..."
