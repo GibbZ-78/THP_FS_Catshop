@@ -1,4 +1,4 @@
-<div class="card" style="width: 18rem;">
+<div class="card rounded-top" style="width: 18rem;">
   <%= image_tag(my_cat.image_url, alt: my_cat.title, class: "card-img-top") %>
   <div class="card-body">
     <h5 class="card-title"><%= my_cat.title %></h5>
@@ -7,8 +7,7 @@
     <% if user_signed_in? # The button below will appear only if current_user is connected %>
     <%= link_to("Ajouter au panier", root_path, class: "btn btn-secondary") %>
     <% else # if current_user is NOT connected then button redirect to sign-in page %>
-    <%= link_to("Se connecter", root_path, class: "btn btn-secondary") %>
+    <%= link_to("Se connecter", new_user_session_path, class: "btn btn-secondary") %>
     <% end %>
   </div>
 </div>
-
