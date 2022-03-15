@@ -1,6 +1,6 @@
-<section class="row justify-content-center">
+<section class="row justify-content-between">
   <% all_items.each do |one_cat| %>
-  <div class="col-4">
+  <div class="col-3">
     <%= render("layouts/partials/section_one_card", my_cat: one_cat)%>
   </div>
   <% end %>

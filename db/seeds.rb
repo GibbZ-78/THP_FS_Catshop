@@ -15,7 +15,7 @@ puts "SEEDING - Creation of some fake users"
 puts
 5.times do |x|
 	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "THP2022", email: "kittenmail_" + x.to_s + "@yopmail.com", birthdate: Faker::Date.birthday(min_age: 16, max_age: 100))
-	puts "  > User n°: #{User.all.last.id} - first_name: #{User.all.last.first_name} - last_name: #{User.all.last.last_name} - email: #{User.all.last.email} - password: #{User.all.last.encrypted_password} - birthdate: #{User.all.last.birthdate}"
+	puts "  > User n°: #{User.last.id} - first_name: #{User.last.first_name} - last_name: #{User.last.last_name} - email: #{User.last.email} - password: #{User.last.encrypted_password} - birthdate: #{User.last.birthdate}"
 end
 puts "  > Finished seeding users"
 
@@ -28,9 +28,9 @@ puts
 puts "SEEDING - Creation of some fake items"
 puts
 20.times do |x|
-	Item.create(title: "Chat n° :"+ x.to_s, description: Faker::Lorem.paragraph(sentence_count: 3), price: rand(8.0..99.0).round(2), image_url: "image_"+ x.to_s + ".jpg")
- 	puts "  > Item n°: #{Item.all.last.id} - title: #{Item.all.last.title} - description: #{Item.all.last.description[0..20]} - price: #{Item.all.last.price} - image: #{Item.all.last.image_url}"
+	Item.create(title: "Chat n° : " + (x+1).to_s, description: Faker::Lorem.paragraph(sentence_count: 3), price: rand(8.0..99.0).round(2), image_url: "image_" + (x+1).to_s + ".jpg")
+ 	puts "  > Item n°: #{Item.last.id} - title: #{Item.last.title} - description: #{Item.last.description[0..20]} - price: #{Item.last.price} - image: #{Item.last.image_url}"
 end
 puts "  > Finished seeding items"
 
-puts "Ending seeding"
+puts "SEEDING - This is the end..."
