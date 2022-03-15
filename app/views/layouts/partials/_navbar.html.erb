@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid py-3">
+    <div class="left_navbar d-flex">
+      <%= link_to 'CatShop', root_path, class: 'navbar-brand text-white' %>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Variété / pelage / goût" aria-label="Rechercher">
+        <button class="btn btn-outline-success" type="submit">Recherche</button>
+      </form>
+    </div>
+    <div class="right_navbar">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to 'Boutique', root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%# A remplacer/agrémenter d'une icone bootstrap %>
+            <%= link_to 'Panier', root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%# A remplacer par un avatar %>
+            <%= link_to 'Mon compte', root_path, class: 'nav-link' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
