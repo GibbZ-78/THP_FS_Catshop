@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-8 my-5 px-3">
+    <h2>Panier</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Produits</th>
+          <th scope="col">Prix</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%# Pour chaque item_cart %>
+        <tr class="h-100 align-middle text-align-center">
+          <th scope="row">
+            <%= image_tag("image_1.jpg", size: "110", class: "img-fluid") %> <!-- path à remplacer par l'image du item-->
+          </th>
+          <td class="">
+            <span>13.99</span> <!-- Prix du item-->
+          </td>
+          <td class="">
+            <div class="">
+              <%= number_field_tag 'itemQuantity', '1', min: 0, class: "form-control" %>
+            </div>
+          </td> 
+          <td class="">13.99</td> <!-- Méthode de calcul -->
+        </tr>
+        <%# end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-4 my-5 px-3">
+    <h2>Récapitulatif</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Produits</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="h-100 align-middle text-center">
+          <th scope="row ">
+            <span id="sommeCartItems">3</span> <!-- A remplacer par le retour d'une méthode de sommeCartItems -->
+          </th>
+          <td>
+            <span id="sommeTotale">13.99</span> <!-- A remplacer par le retour d'une méthode de sommeTotale -->
+            <span>&euro;</span> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row-col-3 text-center">
+      <%= link_to 'Commander', root_path, class:'btn btn-success' %> <!-- Redirection Stripe -->
+    </div>
+  </div>
+</div>
