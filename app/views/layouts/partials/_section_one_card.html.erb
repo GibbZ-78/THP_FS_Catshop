@@ -12,7 +12,7 @@
     <p class="card-text"><%= "#{my_cat.description[0..60]}..." %></p>
     <%= link_to("Voir détails", root_path, class: "btn btn-info btn-sm") %>
     <% if user_signed_in? # The button below will appear only if current_user is connected %>
-    <%= link_to("Ajouter au panier", root_path, class: "btn btn-primary btn-sm") %>
+    <%= link_to("Ajouter au panier", carts_update_path, class: "btn btn-primary btn-sm") %>
     <% else # if current_user is NOT connected then button redirect to sign-in page %>
     <%= link_to("Ajouter au panier", new_user_session_path, class: "btn btn-secondary btn-sm") %>
     <% end %>
