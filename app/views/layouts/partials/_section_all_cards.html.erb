@@ -1,0 +1,7 @@
+<section class="row justify-content-center">
+  <% all_items.each do |one_cat| %>
+  <div class="col-3">
+    <%= render("layouts/partials/section_one_card", my_cat: one_cat)%>
+  </div>
+  <% end %>
+</section>
