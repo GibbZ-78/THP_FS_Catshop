@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   devise_for :users
   
   # JBV 16.03.2022 - Route to 'update' method of the 'carts' controller created with the latter
-  get 'carts/update'
+  get '/carts/:cat_id', to: 'carts#update'
 
   # JBV 15.03.2022 - Route to 'index' method of the 'items' controller created with the latter
-  get 'items/index'
+  get '/items', to: 'items#index'
 
   # JBV 15.03.2022 - Other routes for specific static pages
   get 'static_pages/about'

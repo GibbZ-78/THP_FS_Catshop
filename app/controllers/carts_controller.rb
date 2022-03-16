@@ -11,8 +11,8 @@ class CartsController < ApplicationController
       print "  > Selecting cart from current user"
       @cart = Cart.where(user_id:current_user.id)   #This is where @cart could be "nil"... How to manage it (cf. above)
       puts "...Found !"
-      print "  > Inserting item (#{params[:my_cat.id]}) into cart (#{@cart.id})"
-      @cart_item = CartItems.create(cart_id:@cart.id,item_id:params[:my_cat.id],comment:"Added from 'add to cart' button")
+      print "  > Inserting item (#{params[:cat_id]}) into cart (#{@cart.id})"
+      @cart_item = CartItems.create(cart_id:@cart.id, item_id:params[:cat_id], comment:"Added from 'add to cart' button")
       puts "...Done"
     else
       puts "  > User is NOT logged. Redirecting to site home page."
