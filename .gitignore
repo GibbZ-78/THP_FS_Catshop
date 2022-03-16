@@ -30,4 +30,3 @@
 # JBV - Adding extra files / dirs to be ignored when pushing #
 ##############################################################
 .env
-
