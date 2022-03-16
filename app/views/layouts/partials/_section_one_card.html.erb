@@ -1,8 +1,8 @@
-<div class="card rounded-top mb-3" style="width: 18rem;">
+<div class="card rounded-top mb-3">
   <%= image_tag(my_cat.image_url, alt: my_cat.title, class: "card-img-top") %>
   <div class="card-body">
     <h5 class="card-title"><%= my_cat.title %></h5>
-    <p class="card-text"><%= my_cat.description %></p>
+    <p class="card-text"><%= "#{my_cat.description[0..60]}..." %></p>
     <%= link_to("Voir détails", root_path, class: "btn btn-info btn-sm") %>
     <% if user_signed_in? # The button below will appear only if current_user is connected %>
     <%= link_to("Ajouter au panier", root_path, class: "btn btn-primary btn-sm") %>
