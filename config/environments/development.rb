@@ -69,11 +69,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp        # Will use STMP as default mail sending protocol (see detailed confi below)
   config.action_mailer.perform_deliveries = true      # Will ACTIVATE ACTUAL mail sending (setinng this to "false" will avoid any mail departure)
 
+  #YR - test Action mailer: development mode
+  #config.action_mailer.delivery_method = :letter_opener
+
   # JBV - Adding all necesaary SendGrid parameters to enable sending and receiving mails
+  # YR - shouldn't be in config>environment.rb?
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_LOGIN'],
     :password => ENV['SENDGRID_PWD'],
-    :domain => 'monfauxnomdesite.fr',
+    :domain => 'catshop.fr',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,

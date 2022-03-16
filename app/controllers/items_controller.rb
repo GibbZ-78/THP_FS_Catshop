@@ -8,4 +8,8 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  #YR 16.03.2022 - Created 'show' method to present each item
+  def show
+    @item = Item.find(params[:id])
+  end
 end
