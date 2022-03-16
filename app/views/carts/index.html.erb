@@ -11,22 +11,29 @@
         </tr>
       </thead>
       <tbody>
-        <%# Pour chaque item_cart %>
+        <%if @items.nil? || @items.empty?%>
+          <tr>
+            <th scope="row"></th>
+            <td colspan="4" class="table-active">Aucun article dans le panier</td>
+          </tr>
+        <%else%>
+        <% @items.each do |item| %>
         <tr class="h-100 align-middle text-align-center">
           <th scope="row">
-            <%= image_tag("image_1.jpg", size: "110", class: "img-fluid") %> <!-- path à remplacer par l'image du item-->
+            <%= image_tag(item.image_url, size: "110", class: "img-fluid") %> <!-- path à remplacer par l'image du item-->
           </th>
           <td class="">
-            <span>13.99</span> <!-- Prix du item-->
+            <span><%= item.price %></span> <!-- Prix du item-->
           </td>
           <td class="">
             <div class="">
               <%= number_field_tag 'itemQuantity', '1', min: 0, class: "form-control" %>
             </div>
           </td> 
-          <td class="">13.99</td> <!-- Méthode de calcul -->
+          <td class=""><%= item.itemSubTotal(3) %></td> <!-- Méthode de calcul -->
         </tr>
-        <%# end %>
+        <% end %>
+      <%end%>
       </tbody>
     </table>
   </div>

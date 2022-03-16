@@ -3,16 +3,22 @@ class CartsController < ApplicationController
 
   def index
     # Le show du cart doit renvoyer les cart_items
-    
+    @cart = Cart.find_by(user_id:current_user.id)
+    if @cart.nil?
+      @cart = Cart.create(user_id:current_user.id, comment: "Cart created")
+      @items = @cart.items
+    else
+      @items = @cart.items
+    end
   end
 
   # def show
   # end
 
-  def new
-    # Instancie l'objet cart
+  # def new
+  #   # Instancie l'objet cart
 
-  end
+  # end
 
   def update
   # JBV 16.03.2022 - Instantiated the "update" method of the current_user's cart when adding an item directly from a czrd of the 'items/index'
@@ -22,7 +28,7 @@ class CartsController < ApplicationController
       if @cart.nil?                                  # If the user has a cart already, @cart points to it.
         @cart = Cart.create(user_id:current_user.id, comment: "Cart created to enable adding a new item")
       end
-      @cart_item = CartItem.create(cart_id:@cart.id, item_id:params[:cat_id], comment:"Added from 'add to cart' button")
+      @cart_item = CartItem.create(cart_id:@cart.id, item_id:params[:id], comment:"Added from 'add to cart' button")
     else
       redirect_to user_new_session_path     # If user NOT signed-in but, for whatever reason, lands here (not possible theoretically), then redirect to web home page
     end
@@ -32,4 +38,8 @@ class CartsController < ApplicationController
     # Supprime le contenu de l'objet cart - 1..N items_cart
 
   end
+
+
+
+
 end
