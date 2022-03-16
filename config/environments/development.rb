@@ -73,7 +73,6 @@ Rails.application.configure do
   #config.action_mailer.delivery_method = :letter_opener
 
   # JBV - Adding all necesaary SendGrid parameters to enable sending and receiving mails
-  # YR - shouldn't be in config>environment.rb?
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_LOGIN'],
     :password => ENV['SENDGRID_PWD'],
