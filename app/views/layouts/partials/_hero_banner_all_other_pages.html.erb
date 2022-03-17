@@ -1,6 +1,13 @@
-<section class="row">
-  <div class="px-4 py-5 my-5 text-center">
-    <%= image_tag("banner_all_other_pages", alt:"Photo d'un chaton hyper mignon qui trottine dans l'herbe", class:"opacity-50 rounded-bottom") %>
-    <h1 class="display-5 fw-bold">KITTEN CAT (nom non-définitif)</h1>
+<section class="row justify-content-center">
+  <div class="row text-center rounded-bottom" style="background-image: url('<%= asset_path('''banner_all_other_pages''') %>'); background-size: cover;">
+    <h1 class="display-5 fw-bold text-white mt-5">CATSHOP</h1>
+     <div class="col mx-auto mb-5">
+        <p class="lead fst-italic text-white my-4">Les clichés HD des chatons les plus craquants du Web !</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <% if !user_signed_in? # The button below will appear only if current_user is NOT connected %>
+          <%= link_to("Créez votre compte",new_user_registration_path,class:"btn btn-primary px-4") %>
+          <% end %>
+        </div>
+    </div>
   </div>
 </section>

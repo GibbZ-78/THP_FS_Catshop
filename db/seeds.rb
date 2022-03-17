@@ -14,7 +14,7 @@ puts
 puts "SEEDING - Creation of some fake users"
 puts
 5.times do |x|
-	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "THP2022", email: "kittenmail_" + x.to_s + "@yopmail.com", birthdate: Faker::Date.birthday(min_age: 16, max_age: 100))
+	User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "THP2022", email: "kittenmail_" + (x+1).to_s + "@yopmail.com", birthdate: Faker::Date.birthday(min_age: 16, max_age: 100))
 	puts "  > User n°: #{User.last.id} - first_name: #{User.last.first_name} - last_name: #{User.last.last_name} - email: #{User.last.email} - password: #{User.last.encrypted_password} - birthdate: #{User.last.birthdate}"
 end
 puts "  > Finished seeding users"

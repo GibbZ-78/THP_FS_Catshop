@@ -1,19 +1,15 @@
-<section class="row justify-content-center mb-5">
-  <div class="text-center position-relative">
-    <div class="row">
-      <%= image_tag("banner_index", alt:"Photo de 3 chatons attablés", class:"opacity-50 rounded-bottom") %>
-    </div>
-    <div class="row position-absolute">
-      <h1 class="display-5 fw-bold text-black">CATSHOP</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4 text-black">Retrouvez des clichés HD des chatons les plus craquants du Web !</p>
+<section class="row justify-content-center">
+  <div class="row text-center rounded-bottom" style="background-image: url('<%= asset_path('''banner_index.jpg''') %>'); background-size: cover;">
+    <h1 class="display-5 fw-bold text-black mt-5">CATSHOP</h1>
+     <div class="col mx-auto mb-5">
+        <p class="lead fst-italic text-white my-4">Les clichés HD des chatons les plus craquants du Web !</p>
+
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <% if !user_signed_in? # The button below will appear only if current_user is NOT connected %>
-          <%= link_to("Créez votre compte",new_user_registration_path,class:"btn btn-primary btn-lg px-4 gap-3") %>
+          <%= link_to("Créez votre compte",new_user_registration_path,class:"btn btn-primary px-4") %>
           <% end %>
-          <%= link_to("Parcourez notre catalogue",root_path,class:"btn btn-secondary btn-lg px-4") %>
+          <%= link_to("Découvrez nos "+Item.all.count.to_s+" chatons stars",items_path,class:"btn btn-secondary px-4") %>
         </div>
-      </div>
     </div>
   </div>
 </section>

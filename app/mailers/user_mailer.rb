@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-  
   #YR default mail adress can be modified
   default from: 'jb.vidal@gmail.com'
  
