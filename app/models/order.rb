@@ -10,4 +10,10 @@ class Order < ApplicationRecord
     UserMailer.order_email(self).deliver_now
   end
 
+  after_create :admin_send
+
+  def admin_send
+    UserMailer.admin_email(self).deliver_now
+  end
+
 end
