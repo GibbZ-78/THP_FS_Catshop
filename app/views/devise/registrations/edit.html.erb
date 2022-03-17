@@ -1,10 +1,12 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<main class="container">
+  <div class="card my-1 text-center w-40 card-center">
+    <h2 class="action-banner card-header">Edit Password</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
+  <div class="form-group col-sm">
+    <%= f.label :email, class: "mt-2" %><br>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -12,32 +14,36 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="field col-sm">
+    <%= f.label :password %> <i class="form-text text-muted col-sm">(leave blank if you don't want to change it)</i><br>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
     <% if @minimum_password_length %>
-      <br />
+      <br>
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  <div class="field col-sm mt-2">
+    <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br>
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="actions mt-3 mb-3">
+    <%= f.submit "Update", class:'btn btn-primary' %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div class="card my-3 text-center card-center">
+  <h3 class="action-banner card-header">Cancel my account</h3>
+  <p>Unhappy &#128530; ? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+</div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="card my-3 text-center card-center"> 
+  <%= link_to "Back", :back, class:"btn btn-danger" %>
+</div>
+</main>
