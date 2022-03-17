@@ -1,15 +1,17 @@
 class UserMailer < ApplicationMailer
   
   #YR default mail adress can be modified
-  default from: 'catshop@yopmail.fr'
+  default from: 'jb.vidal@gmail.com'
  
-  def order_email(user)
-    @user = user
-    @item = current_order.Item.find(params[:id]) # to be checked - YR - to be modified: id of the item bought by the user. Cf order_email views.
-
-    #YR 16.03.2022 url to be modified (https://kittencat.herokuapp.com/)- we declare a new variable: @url. This variable will be used in the email view
-    @url  = 'http://localhost:3000/login' 
-
+  def order_email(order)
+    @user = order.user
+    @order = order
+    @url  = 'https://kittencatshop.herokuapp.com/' 
     mail(to: @user.email, subject: 'Votre commande chez Catshop') 
+  end
+
+  def admin_email(order)
+    @order = order
+    mail(to: "adminvocal46@yopmail.com", subject: 'nouvelle commande réalisée')
   end
 end
