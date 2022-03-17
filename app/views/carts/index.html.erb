@@ -27,10 +27,11 @@
           </td>
           <td class="">
             <div class="">
-              <%= number_field_tag 'itemQuantity', '1', min: 0, class: "form-control" %>
+              <% my_quantity = @cart_items.find_by(item_id:item.id).quantity %>
+              <%= number_field_tag 'itemQuantity', my_quantity, min: 0, class: "form-control", readonly: true %>
             </div>
           </td> 
-          <td class=""><%= item.itemSubTotal(3) %></td> <!-- Méthode de calcul -->
+          <td class="" id="total"><%= item.itemSubTotal(my_quantity) %></td> <!-- Méthode de calcul -->
         </tr>
         <% end %>
       <%end%>
@@ -50,10 +51,12 @@
       <tbody>
         <tr class="h-100 align-middle text-center">
           <th scope="row ">
-            <span id="sommeCartItems">3</span> <!-- A remplacer par le retour d'une méthode de sommeCartItems -->
+            <span id="sommeCartItems"><%= @cart_items.sum(:quantity) %></span> <!-- A remplacer par le retour d'une méthode de sommeCartItems -->
           </th>
           <td>
-            <span id="sommeTotale">13.99</span> <!-- A remplacer par le retour d'une méthode de sommeTotale -->
+            <% total = [] %>
+            <% @cart_items.each do |item| total << (item.quantity * item.item.price) end %> 
+            <span id="sommeTotale"><%= total.sum %></span> <!-- A remplacer par le retour d'une méthode de sommeTotale -->
             <span>&euro;</span> 
           </td>
         </tr>
