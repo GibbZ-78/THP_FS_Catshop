@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-  
   #YR default mail adress can be modified
   default from: 'jb.vidal@gmail.com'
  
@@ -7,6 +6,7 @@ class UserMailer < ApplicationMailer
     @user = order.user
     @order = order
     @url  = 'https://kittencatshop.herokuapp.com/' 
+
     mail(to: @user.email, subject: 'Votre commande chez Catshop') 
   end
 

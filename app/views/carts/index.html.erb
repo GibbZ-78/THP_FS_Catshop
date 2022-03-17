@@ -4,10 +4,11 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Produits</th>
+          <th scope="col">Produit</th>
           <th scope="col">Prix</th>
           <th scope="col">Quantité</th>
-          <th scope="col">Total</th>
+          <th scope="col">Sous-total</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +33,11 @@
             </div>
           </td> 
           <td class="" id="total"><%= item.itemSubTotal(my_quantity) %></td> <!-- Méthode de calcul -->
+          <td>
+            <%= link_to cart_path(item.id), method: 'delete', confirm: 'Supprimer cet article ?' do %>
+              <i class="bi bi-trash"></i>
+            <%end%>
+          </td>
         </tr>
         <% end %>
       <%end%>
