@@ -41,6 +41,12 @@ class CartsController < ApplicationController
 
   def destroy
     # Supprime le contenu de l'objet cart - 1..N items_cart
+    @item = CartItem.find_by(item_id: params[:id])
+    @item.destroy
+    respond_to do |format|
+      format.html { redirect_to carts_path }
+      format.js { }
+    end
   end
 
 end
