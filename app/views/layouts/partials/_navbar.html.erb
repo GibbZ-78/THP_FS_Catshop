@@ -13,13 +13,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <%if !user_signed_in?%>
+        <%if user_signed_in?%>
           <li class="nav-item">
-            <%= link_to 'Boutique', root_path, class: 'nav-link' %>
+            <%= link_to 'Boutique', items_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%# A remplacer/agrémenter d'une icone bootstrap %>
-            <%= link_to 'Panier', root_path, class: 'nav-link' %>
+            <%= link_to 'Panier', carts_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%# A remplacer par un avatar %>
