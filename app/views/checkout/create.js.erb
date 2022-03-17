@@ -1,0 +1,9 @@
+var stripe = Stripe("<%=Rails.configuration.stripe[:publishable_key]%>");
+console.log("***********");
+console.log(stripe);  /* JBV - DEBUG */
+console.log("***********");
+stripe.redirectToCheckout({
+  sessionId: "<%=session.id%>"
+}).then(function(result) {
+  console.log(result.error.message)
+});

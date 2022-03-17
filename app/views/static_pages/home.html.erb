@@ -10,7 +10,7 @@
 
 <% 3.times do |x| %>
   <div class="col-md-4">
-        <%= render "layouts/partials/section_one_card", my_cat: @items[x] %>
+        <%= render "layouts/partials/section_one_card", my_cat: @items[rand(0...@items.length)] %>
     </div>
 <% end %>
 </section>
@@ -45,7 +45,7 @@
 <section class="row justify-content-between">
 <% 6.times do |x| %>
   <div class="col-md-4">
-        <%= render "layouts/partials/section_one_card", my_cat: @items[x+3] %>
+        <%= render "layouts/partials/section_one_card", my_cat: @items[x] %>
     </div>
 <% end %>
 </section>

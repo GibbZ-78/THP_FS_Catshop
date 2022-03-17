@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KittenCat</title>
+    <title>CatShop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <!-- Adding STRIPE javascript library needed by the new payment form model -->
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
 
   <body>
