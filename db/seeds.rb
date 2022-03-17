@@ -29,7 +29,7 @@ puts
 puts "SEEDING - Creation of some fake items"
 puts
 20.times do |x|
-	Item.create(title: "Chat n° : " + (x+1).to_s, description: Faker::Lorem.paragraph(sentence_count: 3), price: rand(8.0..99.0).round(2), image_url: "image_" + (x+1).to_s + ".jpg")
+	Item.create(title: Faker::Games::Pokemon.name, description: Faker::Lorem.paragraph(sentence_count: 3), price: rand(8.0..99.0).round(2), image_url: "image_" + (x+1).to_s + ".jpg")
  	puts "  > Item n°: #{Item.last.id} - title: #{Item.last.title} - description: #{Item.last.description[0..20]} - price: #{Item.last.price} - image: #{Item.last.image_url}"
 end
 puts "  > Finished seeding items"

@@ -87,4 +87,5 @@ group :development, :test do
   gem "dotenv-rails"
 end
 
+gem "friendly_id", "~> 5.4"
 # Enf of Gemfile
