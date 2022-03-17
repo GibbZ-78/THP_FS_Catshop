@@ -1,11 +1,11 @@
 
         <section class="row bg-dark justify-content-center">
         <div class="col-lg-6 d-flex flex-column align-items-center">
-            <img class="img-fluid rounded-3 my-2" src=<%= @item.image_url %> alt="..." />
+            <%= image_tag @item.image_url, class: 'img-fluid rounded-3 my-2' %>
             <div>
-              <img class="img-fluid rounded-3 my-2" src="https://dummyimage.com/147x98/343a40/6c757d" alt="..." />
-              <img class="img-fluid rounded-3 my-2" src="https://dummyimage.com/147x98/343a40/6c757d" alt="..." />
-              <img class="img-fluid rounded-3 my-2" src="https://dummyimage.com/147x98/343a40/6c757d" alt="..." />
+              <%= image_tag @item.image_url, size: '147x98' , class: 'img-fluid rounded-3 my-2' %>
+              <%= image_tag @item.image_url, size: '147x98' , class: 'img-fluid rounded-3 my-2' %>
+              <%= image_tag @item.image_url, size: '147x98' , class: 'img-fluid rounded-3 my-2' %>
             </div>
         </div>
                     
@@ -13,12 +13,15 @@
             <div class="my-5 text-xl-start">
                 <h2 class="fw-bolder text-white mb-3"><%= @item.title %></h2>
                 <p class="lead fw-normal text-white-50 mb-4"><%= @item.description %></p>
-                <h2 class="fw-bolder text-white mb-3"><%= @item.price %></h2>
+                <h2 class="fw-bolder text-white mb-3"><%= @item.price %>€</h2>
                 <div class="d-grid gap-3 d-sm-flex ">
-                    <a class="btn btn-outline-light btn-lg px-4 me-sm-3 mb-3" href="#">Text CTA 1</a>
-                    <a class="btn btn-outline-light btn-lg px-4 me-sm-3 mb-3" href="#">Text CTA 2</a>
+                    <% if user_signed_in? # The button below will appear only if current_user is connected %>
+                    <%= link_to("Ajouter au panier", cart_path(@item.id), method: "patch", class: "btn btn-primary btn-lg px-4 me-sm-3 mb-3") %>
+                    <% else # if current_user is NOT connected then button redirect to sign-in page %>
+                    <%= link_to("Ajouter au panier", new_user_session_path, class: "btn btn-primary btn-lg px-4 me-sm-3 mb-3") %>
+                    <% end %>
+                    <%= link_to('Revenir au menu', root_path, class: "btn btn-outline-light btn-lg px-4 me-sm-3 mb-3") %>
                 </div>
-                <a class="btn btn-primary btn-lg px-4 me-sm-3 mb-3" href="#">Add to cart</a>
             </div>
         </div>
     </section>
@@ -37,16 +40,24 @@
   <h3>Related product</h3>
 
   <div>
-    <img class="img-fluid rounded-3 my-2" src="https://dummyimage.com/147x98/343a40/6c757d" alt="..." />
+    <%= image_tag @item.image_url, size: '147x98' , class: 'img-fluid rounded-3 my-2' %>
     <div>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>        
-      <a class="btn btn-primary btn-lg px-3 me-sm-1 mb-1" href="#">Add to cart</a>
+        <% if user_signed_in? # The button below will appear only if current_user is connected %>
+        <%= link_to("Ajouter au panier", cart_path(@item.id), method: "patch", class: "btn btn-primary btn-lg px-4 me-sm-3 mb-3") %>
+        <% else # if current_user is NOT connected then button redirect to sign-in page %>
+        <%= link_to("Ajouter au panier", new_user_session_path, class: "btn btn-primary btn-lg px-4 me-sm-3 mb-3") %>
+        <% end %>
     </div>
   </div>
   <div>
-    <img class="img-fluid rounded-3 my-2" src="https://dummyimage.com/147x98/343a40/6c757d" alt="..." />
+  <%= image_tag @item.image_url, size: '147x98' , class: 'img-fluid rounded-3 my-2' %>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>        
-    <a class="btn btn-primary btn-lg px-3 me-sm-1 mb-1" href="#">Add to cart</a>
+      <% if user_signed_in? # The button below will appear only if current_user is connected %>
+      <%= link_to("Ajouter au panier", cart_path(@item.id), method: "patch", class: "btn btn-primary btn-lg px-4 me-sm-3 mb-3") %>
+      <% else # if current_user is NOT connected then button redirect to sign-in page %>
+      <%= link_to("Ajouter au panier", new_user_session_path, class: "btn btn-primary btn-lg px-4 me-sm-3 mb-3") %>
+      <% end %>
   </div>
 </div>
 
