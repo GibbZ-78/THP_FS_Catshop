@@ -81,12 +81,12 @@ class CheckoutController < ApplicationController
     end
 
     # Destroying current_user's "Cart" (+ "delete cascade" on related "CartItems")
-    if @my_cart.items.count == @my_order.items.count
+    # if @my_cart.items.count == @my_order.items.count
       @my_cart.destroy    # Destroy cart & cart_item only if number of items is the same
-      puts "  > Destroying cart now backed-up into an order"
-    else
-      puts "  > ERROR - cart and order might not be synchronized..."
-    end
+    #   puts "  > Destroying cart now backed-up into an order"
+    # else
+    #   puts "  > ERROR - cart and order might not be synchronized..."
+    # end
 
     puts "INFO - Stripe - Closing 'success' method"
 

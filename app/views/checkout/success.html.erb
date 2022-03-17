@@ -1,5 +1,5 @@
 <div class="container text-center my-5">
   <h1>Stripe - Paiment effectué avec succès</h1>
-  <p>Nous avons bien reçu votre paiment de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€"), separator: ",", delimiter: "", format: "%n %u") %>.</p>
+  <p>Nous avons bien reçu votre paiment de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
   <p>Le statut de votre transaction est: <%= @payment_intent.status%>.</p>
 </div>
