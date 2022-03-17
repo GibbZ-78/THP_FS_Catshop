@@ -1,2 +1,58 @@
-<h1>StaticPages#home</h1>
-<p class="text-primary">Find me in app/views/static_pages/home.html.erb</p>
+<!-- PARTIE BANNER -->
+
+<section>
+<%= render "layouts/partials/hero_banner_index" %>
+</section>
+
+<hr>
+<!-- PARTIE CARDS x3 -->
+<section class="row justify-content-between">
+
+<% 3.times do |x| %>
+  <div class="col-md-4">
+        <%= render "layouts/partials/section_one_card", my_cat: @items[x] %>
+    </div>
+<% end %>
+</section>
+
+<hr>
+
+<!-- PARTIE TABS -->
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">British Shortair</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Chartreux</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">European Shortair</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Havana Brown</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="#">Maine Coon</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="#">Persan</a>
+  </li>
+</ul>
+
+<!-- PARTIE CARDS x6 -->
+
+<section class="row justify-content-between">
+<% 6.times do |x| %>
+  <div class="col-md-4">
+        <%= render "layouts/partials/section_one_card", my_cat: @items[x+3] %>
+    </div>
+<% end %>
+</section>
+
+<!-- BUTTON VIEW MORE -->
+<div class="row justify-content-center my-4">
+    <div class="col-2 text-center">
+        <%= link_to "Voir plus", items_index_path, class: "btn btn-outline-primary btn-lg" %>
+    </div>
+</div>
