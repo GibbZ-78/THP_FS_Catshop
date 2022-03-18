@@ -4,11 +4,11 @@ class CartsController < ApplicationController
   def index
     @cart = Cart.find_by(user_id:current_user.id)
     if @cart.nil?
-      @cart = Cart.create(user_id:current_user.id, comment: "Cart created")
-      @items = @cart.items  # price    
+      @cart = Cart.create(user_id:current_user.id, comment: "Cart created when user displays cart 'show' page")
+      @items = @cart.items  # Dans ce cas, @items est "nil" >> pris en charge dans la vue
     else
-      @cart_items = CartItem.where(cart_id:@cart.id) # quantity  
-      @items = @cart.items
+      @cart_items = CartItem.where(cart_id:@cart.id) # @cart_items contient les lignes du panier (incl. "quantity")
+      @items = @cart.items  # @items contient chaque item liés à une des lignes du panier (incl. "price")
     end
   end
 
@@ -24,7 +24,7 @@ class CartsController < ApplicationController
     if user_signed_in?
       @cart = Cart.find_by(user_id:current_user.id)   # At this stage, the user could have a cart already (or NOT!)
       if @cart.nil?                                   # If the user has a cart already, @cart points to it.
-        @cart = Cart.create(user_id:current_user.id, comment: "Cart created to enable adding a new item")
+        @cart = Cart.create(user_id:current_user.id, comment: "Cart created via the 'update' method when user adding a new item")
       end
       
       @cart_item = CartItem.find_by(cart_id:@cart.id, item_id:params[:id])
@@ -41,6 +41,12 @@ class CartsController < ApplicationController
 
   def destroy
     # Supprime le contenu de l'objet cart - 1..N items_cart
+    @item = CartItem.find_by(item_id: params[:id])
+    @item.destroy
+    respond_to do |format|
+      format.html { redirect_to carts_path }
+      format.js { }
+    end
   end
 
 end

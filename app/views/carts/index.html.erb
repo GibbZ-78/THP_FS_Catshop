@@ -4,10 +4,11 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Produits</th>
+          <th scope="col">Produit</th>
           <th scope="col">Prix</th>
           <th scope="col">Quantité</th>
-          <th scope="col">Total</th>
+          <th scope="col">Sous-total</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +33,11 @@
             </div>
           </td> 
           <td class="" id="total"><%= item.itemSubTotal(my_quantity) %></td> <!-- Méthode de calcul -->
+          <td>
+            <%= link_to cart_path(item.id), method: 'delete', confirm: 'Supprimer cet article ?' do %>
+              <i class="bi bi-trash"></i>
+            <%end%>
+          </td>
         </tr>
         <% end %>
       <%end%>
@@ -51,19 +57,26 @@
       <tbody>
         <tr class="h-100 align-middle text-center">
           <th scope="row ">
-            <span id="sommeCartItems"><%= @cart_items.sum(:quantity) %></span> <!-- A remplacer par le retour d'une méthode de sommeCartItems -->
+            <span id="sommeCartItems"><%= if @cart_items then @cart_items.sum(:quantity) else 0 end %></span> <!-- A remplacer par le retour d'une méthode de sommeCartItems -->
           </th>
           <td>
-            <% total = [] %>
-            <% @cart_items.each do |item| total << (item.quantity * item.item.price) end %> 
-            <span id="sommeTotale"><%= total.sum %></span> <!-- A remplacer par le retour d'une méthode de sommeTotale -->
+            <%  cart_total = []
+                if @cart_items
+                  @cart_items.each do |item| 
+                    cart_total << (item.quantity * item.item.price) 
+                  end
+                end 
+            %>
+            <span id="sommeTotale"><%= cart_total.sum %></span> <!-- A remplacer par le retour d'une méthode de sommeTotale -->
             <span>&euro;</span> 
           </td>
         </tr>
       </tbody>
     </table>
     <div class="row-col-3 text-center">
-      <%= link_to 'Commander', root_path, class:'btn btn-success' %> <!-- Redirection Stripe -->
+      <% btn_disabled = ((cart_total.sum == 0) ? "disabled" : "") %>
+      <!-- Redirection Stripe using an AJAX tunnel ("remote: true")-->
+      <%= button_to "Commander & Payer", checkout_create_path(total:cart_total.sum), class:"btn btn-success #{btn_disabled}", remote: true %>
     </div>
   </div>
 </div>

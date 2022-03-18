@@ -1,0 +1,52 @@
+<div class="row">
+  <h1 class="text-center">Mon Compte</h1>
+</div>
+
+  <div class="row justify-content-center">
+      <h3 class="text-center"> Bienvenue sur votre profil ! </h3>
+
+      <div class="col-md-4 my-5">
+
+      <a href="#"><img style="height:auto; border-radius: 50px ;" alt="Avatar" width="150" height="150" class="avatar-user width-full border color-bg-default mb-1" src="https://studentloans.com/images/vet.png"></a>
+      
+      <div class="my-4">
+        <h4>Prénom : <%= current_user.first_name%> </h4>
+        <h4>Nom : <%= current_user.last_name%> </h4>
+        <h4>Date de naissance : <%= current_user.birthdate.nil? ? "" : current_user.birthdate.strftime('%d/%m/%Y') %> </h4>
+      </div>
+
+      <%= link_to 'Mettre à jour mon profil', edit_customer_path(current_user.id), class: 'btn btn-lg btn-primary'%>
+    
+    </div>
+    <div class="col-md-6 my-5">
+      <h3 class="mb-2 mt-2" >Mes commandes</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Date</th>
+              <th scope="col">Méthode de paiement</th>
+              <th scope="col">Commentaire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td>17/03/2022</td>
+              <td>C.B.</td>
+              <td>Commande d'exemple</td>
+            </tr>
+              <% current_user.orders.each do |order| %>     
+                <tr>
+                  <th scope="row"><%= order.id %></th>
+                  <td><%= order.date.strftime('%d/%m/%Y') %></td>
+                  <td><%= order.payment_method%></td>
+                  <td><%= order.comment %></td>
+                </tr>
+              <%end%>
+          </tbody>
+        </table>
+    </div>
+
+  </div>
+
