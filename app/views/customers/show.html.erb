@@ -12,7 +12,7 @@
       <div class="my-4">
         <h4>Prénom : <%= current_user.first_name%> </h4>
         <h4>Nom : <%= current_user.last_name%> </h4>
-        <h4>Date de naissance : <%= current_user.birthdate.strftime('%d/%m/%Y')%> </h4>
+        <h4>Date de naissance : <%= current_user.birthdate.nil? ? "" : current_user.birthdate.strftime('%d/%m/%Y') %> </h4>
       </div>
 
       <%= link_to 'Mettre à jour mon profil', edit_customer_path(current_user.id), class: 'btn btn-lg btn-primary'%>
